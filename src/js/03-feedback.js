@@ -29,11 +29,16 @@ function loadFormState() {
 
 function handleSubmit(event) {
   event.preventDefault();
-  const formState = {
-    email: emailInput.value,
-    message: messageInput.value,
-  };
-  console.log('submit:', formState);
-  localStorage.removeItem(storageKey);
-  form.reset();
+  
+  if (emailInput.value && messageInput.value) {
+    const formState = {
+      email: emailInput.value,
+      message: messageInput.value,
+    };
+    console.log('submit:', formState);
+    localStorage.removeItem(storageKey);
+    form.reset();
+  } else {
+    alert('Please fill in both form fields');
+  }
 }
